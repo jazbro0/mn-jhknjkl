@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+
+        body {
+            font-family: 'Sofia', sans-serif;
+            background-image: url("fmm.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        form {
+            background-image: url(mantel.jpg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        nav {
+      background: #eb9c4d;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+    }
+    nav a:hover {
+      color: white;
+    }
+        
+    </style>
+    <nav>
+    <a href="torteria p3 novo.html">Inicio</a>
+    <a href="menuprv.html">Menu</a>
+    <a href="formulario22.html">Formulario</a>
+  </nav>
+
+    <script>
+        function prepararCorreo() {
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const direccion = document.getElementById('direccion').value;
+            const pais = document.getElementById('pais').value;
+            const genero = document.getElementById('genero').value;
+            const comentarios = document.getElementById('comentarios').value;
+
+            if (!nombre || !apellido || !email || !telefono || !fechaNacimiento || !direccion || !pais || !genero || !comentarios) {
+                alert("Por favor, complete todos los campos.");
+                return false;
+            }
+
+            if (!email.includes('@')) {
+                alert("Por favor, ingrese un correo electrónico válido.");
+                return false;
+            }
+
+            const body = 
+                `Nombre: ${nombre}\n` +
+                `Apellido: ${apellido}\n` +
+                `Email: ${email}\n` +
+                `Teléfono: ${telefono}\n` +
+                `Fecha de nacimiento: ${fechaNacimiento}\n` +
+                `Dirección: ${direccion}\n` +
+                `País: ${pais}\n` +
+                `Género: ${genero}\n` +
+                `Comentarios: ${comentarios}`;
+
+            const mailtoLink = `mailto:jazminmoreno8@cecyteq.edu.mx?subject=Formulario de Registro&body=${encodeURIComponent(body)}`;
+
+            // Redirigir al cliente de correo
+            window.location.href = mailtoLink;
+            return false; // Evita que el formulario se envíe de forma tradicional
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return prepararCorreo();">
+        <h2>Formulario de Contacto</h2>
+
+        <div class="form-group">
+            <label for="nombre">Nombre 🙂:</label>
+            <input type="text" id="nombre" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="email">Correo electrónico 😊:</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Teléfono 😎:</label>
+            <input type="tel" id="telefono" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fechaNacimiento">Fecha de nacimiento ☀️:</label>
+            <input type="date" id="fechaNacimiento" required>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección 😉:</label>
+            <input type="text" id="direccion" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pais">comunidad 🥰:</label>
+            <select id="pais" required>
+                <option value="">Selecciona un país</option>
+                <option value="México">México</option>
+                <option value="EEUU">Estados Unidos</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Argentina">Argentina</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comentarios">Comentarios 😁:</label>
+            <textarea id="comentarios" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Enviar formulario</button>
+    </form>
+</body>
+</html>
